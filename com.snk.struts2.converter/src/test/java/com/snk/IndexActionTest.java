@@ -22,12 +22,12 @@ import junit.framework.TestCase;
 import com.opensymphony.xwork2.Action;
 
 
-public class HelloWorldActionTest extends TestCase {
+public class IndexActionTest extends TestCase {
     
 	@Test
-    public void testHelloWorldAction() throws Exception {
-        HelloWorldAction action = new HelloWorldAction();
-        String result = action.hello();
+    public void testIndexAction() throws Exception {
+        IndexAction action = new IndexAction();
+        String result = action.index();
         assertEquals(Action.SUCCESS, result);
     }
 }
