@@ -1,6 +1,8 @@
-.metadata
+!.gitignore
 
-**/.*
-**/bin/
-**/target/
+.*
 *.log
+
+*/*/bin/
+*/*/log/
+*/*/target/
