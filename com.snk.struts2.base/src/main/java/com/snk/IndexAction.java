@@ -22,7 +22,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HelloWorldAction extends ActionSupport {
+public class IndexAction extends ActionSupport {
 	private static final long serialVersionUID = 3883588255462590978L;
 	
 	static Logger logger = LoggerFactory.getLogger("action");
@@ -43,10 +43,10 @@ public class HelloWorldAction extends ActionSupport {
 		this.dateNow = dateNow;
 	}
 
-	public String hello(){
+	public String index(){
     	name = "onikage";
     	dateNow = new Date();
-    	logger.debug("hello debug log...");
+    	logger.debug("index debug log...");
     	return SUCCESS;
     }
 }
