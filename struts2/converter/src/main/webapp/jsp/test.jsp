@@ -10,7 +10,6 @@
 	<s:head />
 </head>
 <body>
-	<s:property value="point"/><br/>
 	<s:property value="user" /><br/>
 </body>
 </html>

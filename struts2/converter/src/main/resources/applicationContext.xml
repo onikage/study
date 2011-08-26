@@ -6,5 +6,6 @@
 <beans>
 	<!-- Example of SAF2 action instantiated by Spring -->
     <bean id="indexAction" class="com.snk.IndexAction" singleton="false" />
+    <bean id="testAction" class="com.snk.TestAction" singleton="false" />
 </beans>
 

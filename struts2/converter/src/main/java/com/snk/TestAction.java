@@ -15,29 +15,18 @@
  */
 package com.snk;
 
-
 import com.opensymphony.xwork2.ActionSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class IndexAction extends ActionSupport {
+public class TestAction extends ActionSupport {
 	private static final long serialVersionUID = 3883588255462590978L;
 	
 	static Logger logger = LoggerFactory.getLogger("action");
 	
-	private Point point;
-	
 	private User user;
 	
-	public Point getPoint() {
-		return point;
-	}
-
-	public void setPoint(Point point) {
-		this.point = point;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -46,9 +35,8 @@ public class IndexAction extends ActionSupport {
 		this.user = user;
 	}
 
-	public String index(){
-    	logger.info("point:x="+point.getX()+",y="+point.getY());
-    	logger.info(user.getName()+" age is "+user.getAge());
+	public String test(){
+    	logger.info(user.getName() +" age is "+user.getAge());
     	return SUCCESS;
     }
 }
