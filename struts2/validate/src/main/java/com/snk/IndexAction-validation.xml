@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//OpenSymphony Group//XWork Validator 1.0.3//EN"
+  		"http://www.opensymphony.com/xwork/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="name">
+		<field-validator type="stringlength">
+			<param name="maxlength">6</param>
+			<param name="minlength">4</param>
+			<!-- <message key=""></message> -->
+			<message>length must between ${minlength} and ${maxlength}</message>
+		</field-validator>
+	</field>
+</validators>
