@@ -7,7 +7,8 @@
 <struts>
 	<package name="myPackage" extends="struts-default">
 		<action name="index" class="indexAction" method="index"> 
-			<result>/jsp/index.jsp</result>
+			<result name="success">/jsp/index.jsp</result>
+			<result name="input">/jsp/index.jsp</result>
 		</action>
 	</package>
 </struts>

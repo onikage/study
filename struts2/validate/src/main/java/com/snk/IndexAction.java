@@ -18,6 +18,9 @@ package com.snk;
 import java.util.Date;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +31,7 @@ public class IndexAction extends ActionSupport {
 	static Logger logger = LoggerFactory.getLogger("action");
 	
 	private String name;
+	private String age;
 	private Date dateNow;
 	
 	public String getName() {
@@ -42,7 +46,13 @@ public class IndexAction extends ActionSupport {
 	public void setDateNow(Date dateNow) {
 		this.dateNow = dateNow;
 	}
-
+	public String getAge() {
+		return age;
+	}
+	@RequiredFieldValidator(type=ValidatorType.FIELD, key="age.requried", message="age message")
+	public void setAge(String age) {
+		this.age = age;
+	}
 	public String index(){
     	name = "onikage";
     	dateNow = new Date();

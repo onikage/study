@@ -4,11 +4,14 @@
   		"http://www.opensymphony.com/xwork/xwork-validator-1.0.3.dtd">
 <validators>
 	<field name="name">
+		<field-validator type="required">
+			<message key="name.required.message.key"></message>
+		</field-validator>
 		<field-validator type="stringlength">
-			<param name="maxlength">6</param>
-			<param name="minlength">4</param>
-			<!-- <message key=""></message> -->
-			<message>length must between ${minlength} and ${maxlength}</message>
+			<param name="maxLength">6</param>
+			<param name="minLength">4</param>
+			<!-- <message key="name.length.4.6"></message> -->
+			<message>length must between ${minLength} and ${maxLength}</message>
 		</field-validator>
 	</field>
 </validators>
