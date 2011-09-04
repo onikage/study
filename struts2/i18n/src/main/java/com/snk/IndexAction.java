@@ -16,10 +16,10 @@
 package com.snk;
 
 import java.util.Date;
+import java.util.Locale;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
-import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,6 @@ public class IndexAction extends ActionSupport {
 	static Logger logger = LoggerFactory.getLogger("action");
 	
 	private String name;
-	private String age;
 	private Date dateNow;
 	
 	public String getName() {
@@ -45,26 +44,14 @@ public class IndexAction extends ActionSupport {
 	public void setDateNow(Date dateNow) {
 		this.dateNow = dateNow;
 	}
-	public String getAge() {
-		return age;
-	}
-	@RequiredFieldValidator(type=ValidatorType.FIELD, key="age.requried", message="age message")
-	public void setAge(String age) {
-		this.age = age;
-	}
+
 	public String index(){
     	name = "onikage";
     	dateNow = new Date();
-    	logger.debug("index debug log...");
+    	logger.debug(ActionContext.getContext().getLocale().getLanguage());
+    	logger.debug(ActionContext.getContext().getLocale().getCountry());
+    	logger.debug(getText("msg.1"));
+    	
     	return SUCCESS;
     }
-	
-	@Override
-	public void validate(){
-		logger.debug("in validate() method...");
-	}
-		
-	public void validateIndex(){
-		logger.debug("in validateIndex() method...");
-	}
 }
