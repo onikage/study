@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--comment-->
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.ui.theme" value="simple"/>
+    
+    <!-- Add packages here -->
+    <package name="default" namespace="/" extends="struts-default">
+       <interceptors>
+            <!--session interceptor -->
+            <interceptor name="exceptionManager" class="com.heyun.jat.web.interceptor.ExceptionInterceptor"/>
+            <interceptor name="permissionInterceptor" class="com.heyun.jat.web.interceptor.PermissionInterceptor"/>
+            <interceptor name="sysLogInterceptor" class="com.heyun.jat.web.interceptor.SysLogInterceptor"/>
+            <interceptor-stack name="sessionInterceptorStack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="exceptionManager"/>
+                <interceptor-ref name="permissionInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- session interceptor stack as the default stack and filter all actions -->
+        <default-interceptor-ref name="sessionInterceptorStack"/>
+
+        <global-results>
+            <result name="requestMethodErr">/pages/error/request-error.jsp</result>
+            <result name="unknownExt">/pages/error/common-error.jsp</result>
+            <result name="dataAccFailExt">/pages/error/database-error.jsp</result>
+            <result name="invalidUsageExt">/pages/error/database-error.jsp</result>
+            <result name="cannotLockExt">/pages/error/database-error.jsp</result>
+            <result name="dataIntegrityExt">/pages/error/database-error.jsp</result>
+            <result name="hibJdbcExt">/pages/error/database-error.jsp</result>
+            <result name="invalidApiUsageExt">/pages/error/database-error.jsp</result>
+            <result name="hibQueryExt">/pages/error/database-error.jsp</result>
+            <result name="hibObjectRetExt">/pages/error/database-error.jsp</result>
+            <result name="incorSizeExt">/pages/error/database-error.jsp</result>
+            <result name="hibSysExt">/pages/error/database-error.jsp</result>
+            <result name="excep_error">/pages/error/error.jsp</result>
+            <result name="login">/pages/common/loginPage.jsp</result>
+            <result name="haveNoRight">/pages/common/noright.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping result="dataAccFailExt"
+                               exception="org.springframework.dao.DataAccessResourceFailureException"/>
+            <exception-mapping result="invalidUsageExt"
+                               exception="org.springframework.dao.InvalidDataAccessResourceUsageException"/>
+            <exception-mapping result="cannotLockExt" exception="org.springframework.dao.CannotAcquireLockException"/>
+            <exception-mapping result="dataIntegrityExt"
+                               exception="org.springframework.dao.DataIntegrityViolationException"/>
+            <exception-mapping result="hibJdbcExt" exception="org.springframework.dao.HibernateJdbcException"/>
+            <exception-mapping result="invalidApiUsageExt"
+                               exception="org.springframework.dao.InvalidDataAccessApiUsageException"/>
+            <exception-mapping result="hibQueryExt" exception="org.springframework.dao.HibernateQueryException"/>
+            <exception-mapping result="hibObjectRetExt"
+                               exception="org.springframework.dao.HibernateObjectRetrievalFailureException"/>
+            <exception-mapping result="incorSizeExt"
+                               exception="org.springframework.dao.IncorrectResultSizeDataAccessException"/>
+            <exception-mapping result="hibSysExt" exception="org.springframework.dao.HibernateSystemException"/>
+            <exception-mapping result="unknownExt" exception="java.lang.Exception"/>
+            <exception-mapping result="excep_error" exception="com.heyun.jat.exceptions.SystemException"/>
+        </global-exception-mappings>
+        
+        <action name="successAction" class="com.heyun.jat.web.action.SuccessAction">
+			<result name="success">/pages/common/common-success.jsp</result>	
+		</action>
+
+    </package>
+
+    <include file="web/web-struts.xml"/>
+</struts>

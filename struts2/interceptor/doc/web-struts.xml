@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--comment-->
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 角色管理 -->
+    <package name="role" namespace="/role" extends="default">
+        <action name="list" class="roleAction" method="list">
+            <result name="success">/pages/role/role-list.jsp</result>
+            <result name="input">/pages/role/role-list.jsp</result>
+        </action>
+        
+        <action name="delete" class="roleAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/role/role-list.jsp</result>
+        </action>
+        
+        <action name="edit" class="roleAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/role/role-edit.jsp</result>	
+        </action>
+
+        <action name="grant" class="roleAction" method="grant">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/role/role-grant.jsp</result>	
+        </action>
+        
+        <action name="add" class="roleAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/role/role-add.jsp</result>	
+        </action>
+    </package>
+
+    <!-- 用户管理 -->
+    <package name="user" namespace="/user" extends="default">
+        <action name="list" class="userAction" method="list">
+            <result name="success">/pages/user/user-list.jsp</result>
+            <result name="input">/pages/user/user-list.jsp</result>
+        </action>
+        
+        <action name="delete" class="userAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/user/user-list.jsp</result>
+        </action>
+        
+        <action name="edit" class="userAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/user/user-edit.jsp</result>	
+        </action>
+        
+        <action name="add" class="userAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/user/user-add.jsp</result>	
+        </action>
+        
+        <action name="changUserInfo" class="userAction" method="changUserInfo">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+            </result>
+            <result name="input">/pages/user/user-update.jsp</result>	
+        </action>
+    </package>
+    
+    
+	<!-- 登录  -->
+	<package name="login" namespace="/" extends="default">
+		<action name="login" class="loginAction" method="login">
+            <result name="success" type="redirect">index.html</result>
+            <result name="input">/pages/common/login.jsp</result>
+        </action>
+        
+        <action name="sologin" class="loginAction" method="shipOwnerlogin">
+            <result name="success" type="redirect">index.html</result>
+            <result name="input">/pages/common/sologin.jsp</result>
+        </action>
+        
+        <action name="index" class="indexAction" method="index">
+            <result name="success">/pages/common/mainIframe.jsp</result>
+        </action>
+        
+        <action name="toLogin" class="loginAction" method="toLoginPrepare">
+            <result name="success">/pages/common/login.jsp</result>
+        </action>
+        
+        <action name="logout" class="loginAction" method="logout">
+            <result name="success" type="redirect">toLogin.html</result>
+        </action>
+   	</package>
+
+    <!-- 机构管理 -->
+    <package name="organization" namespace="/organization" extends="default">
+        <action name="list" class="organizationAction" method="list">
+            <result name="success">/pages/organization/organization-list.jsp</result>
+            <result name="input">/pages/organization/organization-list.jsp</result>
+        </action>
+        
+        <action name="delete" class="organizationAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/organization/organization-list.jsp</result>
+        </action>
+        
+        <action name="edit" class="organizationAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/organization/organization-edit.jsp</result>	
+        </action>
+        
+        <action name="add" class="organizationAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/organization/organization-add.jsp</result>	
+        </action>
+        
+        <action name="detail" class="organizationAction" method="detail">
+			<result name="success">/pages/organization/organization-detail.jsp</result>	
+			<result name="input">/pages/organization/organization-detail.jsp</result>
+		</action>
+        
+        <action name="search" class="organizationAction" method="search">
+            <result name="success">/pages/organization/organization-list.jsp</result>
+        </action>
+    </package>
+    
+    <!-- 公司管理 -->
+    <package name="company" namespace="/company" extends="default">
+        <action name="list" class="companyAction" method="list">
+            <result name="success">/pages/company/company-list.jsp</result>
+            <result name="input">/pages/company/company-list.jsp</result>
+        </action>
+        
+        <action name="delete" class="companyAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/company/company-list.jsp</result>
+        </action>
+        
+        <action name="edit" class="companyAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/company/company-edit.jsp</result>	
+        </action>
+        
+        <action name="add" class="companyAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/company/company-add.jsp</result>	
+        </action>
+        
+        <action name="detail" class="companyAction" method="detail">
+			<result name="success">/pages/company/company-detail.jsp</result>	
+			<result name="input">/pages/company/company-detail.jsp</result>
+		</action>
+        
+        <action name="search" class="companyAction" method="search">
+            <result name="success">/pages/company/company-list.jsp</result>
+        </action>
+    </package>
+
+    <!-- 船舶管理 -->
+    <package name="ship" namespace="/ship" extends="default">
+        <action name="list" class="shipAction" method="list">
+            <result name="success">/pages/ship/ship-list.jsp</result>
+            <result name="input">/pages/ship/ship-list.jsp</result>
+        </action>
+        
+		<action name="add" class="shipAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/ship/ship-add.jsp</result>	
+        </action>
+        
+        <action name="edit" class="shipAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/ship/ship-edit.jsp</result>	
+        </action>
+        
+        <action name="delete" class="shipAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/ship/ship-list.jsp</result>
+        </action>
+        
+        <action name="detail" class="shipAction" method="detail">
+			<result name="success">/pages/ship/ship-detail.jsp</result>	
+			<result name="input">/pages/ship/ship-detail.jsp</result>
+		</action>
+		
+		<action name="search" class="shipAction" method="search">
+            <result name="success">/pages/ship/ship-list.jsp</result>
+        </action>
+    </package>
+    
+    <!-- 船员管理 -->
+    <package name="sailor" namespace="/sailor" extends="default">
+        <action name="list" class="sailorAction" method="list">
+            <result name="success">/pages/sailor/sailor-list.jsp</result>
+            <result name="input">/pages/sailor/sailor-list.jsp</result>
+        </action>
+	
+		<action name="add" class="sailorAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/sailor/sailor-add.jsp</result>	
+        </action>
+        
+        <action name="edit" class="sailorAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/sailor/sailor-edit.jsp</result>	
+        </action>
+        
+        <action name="delete" class="sailorAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/sailor/sailor-list.jsp</result>
+        </action>
+        
+        <action name="detail" class="sailorAction" method="detail">
+			<result name="success">/pages/sailor/sailor-detail.jsp</result>
+			<result name="input">/pages/sailor/sailor-detail.jsp</result>
+		</action>
+		
+		<action name="search" class="sailorAction" method="search">
+            <result name="success">/pages/sailor/sailor-list.jsp</result>
+        </action>
+    </package>
+    
+    <!-- 船台管理 -->
+    <package name="slip" namespace="/slip" extends="default">
+        <action name="list" class="slipAction" method="list">
+            <result name="success">/pages/slip/slip-list.jsp</result>
+            <result name="input">/pages/slip/slip-list.jsp</result>
+        </action>
+        
+		<action name="add" class="slipAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/slip/slip-add.jsp</result>	
+        </action>
+        
+        <action name="edit" class="slipAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/slip/slip-edit.jsp</result>	
+        </action>
+        
+        <action name="delete" class="slipAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/slip/slip-list.jsp</result>
+        </action>
+        
+        <action name="search" class="slipAction" method="search">
+            <result name="success">/pages/slip/slip-list.jsp</result>
+        </action>
+    </package>
+    
+    <!-- 终端管理 -->
+    <package name="term" namespace="/term" extends="default">
+        <action name="list" class="termAction" method="list">
+            <result name="success">/pages/term/term-list.jsp</result>
+            <result name="input">/pages/term/term-list.jsp</result>
+        </action>
+        
+		<action name="add" class="termAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/term/term-add.jsp</result>	
+        </action>
+        
+        <action name="edit" class="termAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/term/term-edit.jsp</result>	
+        </action>
+        
+        <action name="delete" class="termAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/term/term-list.jsp</result>
+        </action>
+        
+        <action name="search" class="termAction" method="search">
+            <result name="success">/pages/term/term-list.jsp</result>
+        </action>
+    </package>
+
+    <!-- 终端提供商管理 -->
+    <package name="termProvider" namespace="/termProv" extends="default">
+        <action name="list" class="termProviderAction" method="list">
+            <result name="success">/pages/termProvider/termProvider-list.jsp</result>
+            <result name="input">/pages/termProvider/termProvider-list.jsp</result>
+        </action>
+        
+		<action name="add" class="termProviderAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/termProvider/termProvider-add.jsp</result>	
+        </action>
+        
+        <action name="edit" class="termProviderAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/termProvider/termProvider-edit.jsp</result>	
+        </action>
+        
+        <action name="delete" class="termProviderAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/termProvider/termProvider-list.jsp</result>
+        </action>
+        
+        <action name="search" class="termAction" method="search">
+            <result name="success">/pages/term/term-list.jsp</result>
+        </action>
+    </package>
+
+    <!-- UDK卡管理 -->
+    <package name="udk" namespace="/udk" extends="default">
+        <action name="list" class="udkAction" method="list">
+            <result name="success">/pages/udk/udk-list.jsp</result>
+            <result name="input">/pages/udk/udk-list.jsp</result>
+        </action>
+        
+		<action name="add" class="udkAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/udk/udk-add.jsp</result>	
+        </action>
+        
+        <action name="edit" class="udkAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/udk/udk-edit.jsp</result>	
+        </action>
+        
+        <action name="delete" class="udkAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/udk/udk-list.jsp</result>
+        </action>
+        
+        <action name="search" class="udkAction" method="search">
+            <result name="success">/pages/udk/udk-list.jsp</result>
+        </action>
+    </package>
+
+    <!-- 航行日志管理 -->
+    <package name="naviLog" namespace="/naviLog" extends="default">
+        <action name="list" class="naviLogAction" method="list">
+            <result name="success">/pages/naviLog/naviLog-list.jsp</result>
+            <result name="input">/pages/naviLog/naviLog-list.jsp</result>
+        </action>
+        
+		<action name="add" class="naviLogAction" method="add">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/naviLog/naviLog-add.jsp</result>	
+        </action>
+        
+        <action name="edit" class="naviLogAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/naviLog/naviLog-edit.jsp</result>	
+        </action>
+        
+        <action name="delete" class="naviLogAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/naviLog/naviLog-list.jsp</result>
+        </action>
+        
+        <action name="detail" class="naviLogAction" method="detail">
+			<result name="success">/pages/naviLog/naviLog-detail.jsp</result>
+			<result name="input">/pages/naviLog/naviLog-detail.jsp</result>
+		</action>
+        
+        <action name="search" class="naviLogAction" method="search">
+            <result name="success">/pages/naviLog/naviLog-list.jsp</result>
+        </action>
+    </package>
+	
+	<!-- 地图管理 -->
+	<package name="map" namespace="/map" extends="default">
+        <action name="showMap" class="mapAction" method="showMap">
+            <result name="success">/pages/map/mapIndex.jsp</result>
+        </action>
+    </package>
+    
+    <!-- 摄像头管理 -->
+    <package name="camera" namespace="/camera" extends="default">
+    	<action name="cameraShipTree" class="cameraAction" method="getCameraShipTree"/>
+        <action name="sendCameraCmd" class="cameraAction" method="sendCameraCmd"/>
+        <action name="sendFixedCameraCmd" class="cameraAction" method="sendFixedCameraCmd"/>
+        <action name="queryHisCamImage" class="cameraAction" method="queryHisCamImage">
+        	<result name="success">/pages/map/hisCamImage.jsp</result>
+        </action>
+        <action name="getCameraImg" class="cameraAction" method="getCameraImg"/>
+    </package>
+    
+    <!-- 轨迹回放 -->
+    <package name="trace" namespace="/trace" extends="default">
+    	<action name="traceShipTree" class="traceAction" method="getTraceShipTree"/>
+        <action name="traces" class="traceAction" method="getTrace"/>
+    </package>
+    
+    <!-- 轮船定位 -->
+    <package name="position" namespace="/position" extends="default">
+    	<action name="positionShipTree" class="positionAction" method="getPositionShipTree"/>
+        <action name="position" class="positionAction" method="getPosition"/>
+    </package>
+    
+    <!-- 客户管理 -->
+    <package name="customer" namespace="/customer" extends="default">
+        <action name="list" class="customAction" method="list">
+            <result name="success">/pages/customer/customer-list.jsp</result>
+            <result name="input">/pages/customer/customer-list.jsp</result>
+        </action>
+        
+        <action name="add" class="customAction" method="add">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/customer/customer-add.jsp</result>  
+        </action>
+        
+        <action name="edit" class="customAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/customer/customer-edit.jsp</result> 
+        </action>
+        
+        <action name="delete" class="customAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/customer/customer-list.jsp</result>
+        </action>
+        
+        <action name="search" class="customAction" method="search">
+            <result name="success">/pages/customer/customer-list.jsp</result>
+        </action>
+    </package>
+
+    <!-- 船主管理 -->
+    <package name="shipOwner" namespace="/shipOwner" extends="default">
+        <action name="list" class="shipOwnerAction" method="list">
+            <result name="success">/pages/shipOwner/shipOwner-list.jsp</result>
+            <result name="input">/pages/shipOwner/shipOwner-list.jsp</result>
+        </action>
+        
+        <action name="add" class="shipOwnerAction" method="add">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html</param>
+            </result>
+            <result name="input">/pages/shipOwner/shipOwner-add.jsp</result>  
+        </action>
+        
+        <action name="edit" class="shipOwnerAction" method="edit">
+            <result name="success" type="redirectAction">
+                <param name="actionName">successAction</param>
+                <param name="redirectAction">list.html?currentPage=${currentPage}</param>
+            </result>
+            <result name="input">/pages/shipOwner/shipOwner-edit.jsp</result> 
+        </action>
+        
+        <action name="delete" class="shipOwnerAction" method="delete">
+            <result name="success" type="redirect">
+                <param name="location">list.html?currentPage=${currentPage}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="input">/pages/shipOwner/shipOwner-list.jsp</result>
+        </action>
+        
+        <action name="search" class="shipOwnerAction" method="search">
+            <result name="success">/pages/shipOwner/shipOwner-list.jsp</result>
+        </action>
+    </package>
+    
+    <!-- 客户查询 -->
+    <package name="public" namespace="/public" extends="default">
+    	<action name="index" class="pubQueryAction">
+            <result name="success">/pages/public/index.jsp</result>
+        </action>
+    	<action name="query" class="pubQueryAction" method="query">
+            <result name="success">/pages/public/main.jsp</result>
+            <result name="input">/pages/public/index.jsp</result>
+        </action>
+        <action name="shipInfo" class="pubQueryAction" method="getShipInfo">
+            <result name="success">/pages/public/shipInfo.jsp</result>
+        </action>
+    </package>
+    
+</struts>
