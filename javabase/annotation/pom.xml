@@ -3,9 +3,9 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.snk.javabase</groupId>
-	<artifactId>java_base</artifactId>
+	<artifactId>annotation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>java_base</name>
+	<name>annotation</name>
 
 	<dependencies>
 		<!-- Junit -->
