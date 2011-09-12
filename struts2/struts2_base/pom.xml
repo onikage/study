@@ -3,7 +3,7 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.snk.struts2</groupId>
-	<artifactId>base</artifactId>
+	<artifactId>struts2_base</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Struts 2 base</name>
@@ -64,7 +64,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>base</finalName>
+		<finalName>struts2_base</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.surefire</groupId>
