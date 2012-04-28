@@ -16,7 +16,6 @@
 package com.snk;
 
 import java.util.Date;
-import java.util.Locale;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
